@@ -3,9 +3,9 @@ import 'package:flutter_app1/gradient_containter.dart';
 
 void main() {
   const colors = [
-    Color.fromARGB(255, 165, 36, 161),
-    Color.fromARGB(255, 214, 133, 219),
-    Color.fromARGB(217, 244, 232, 244)
+    Color.fromARGB(255, 144, 7, 139),
+    Color.fromARGB(255, 193, 61, 200),
+    Color.fromARGB(217, 236, 142, 236)
   ];
   runApp(
     const MaterialApp(

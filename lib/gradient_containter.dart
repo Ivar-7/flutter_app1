@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app1/styled_text.dart';
+import 'package:flutter_app1/dice_roller.dart';
 
 var startAlignment = Alignment.topLeft;
 var endAlignment = Alignment.bottomRight;
@@ -19,7 +19,9 @@ class GradientContainer extends StatelessWidget {
           end: endAlignment,
         ),
       ),
-      child: const Center(child: StyledText('GOODBYE CRUEL WORLD!')),
+      child: const Center(
+        child: DiceRoller(),
+      ),
     );
   }
 }
