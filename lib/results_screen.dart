@@ -17,8 +17,8 @@ class ResultsScreen extends StatelessWidget {
     for (var i = 0; i < selectedAnswers.length; i++) {
       summary.add({
         'question_index': i,
-        'question': questions[i],
-        'correct_answer': questions[0],
+        'question': questions[i].text,
+        'correct_answer': questions[i].answers[0],
         'selected_answer': selectedAnswers[i],
       });
     }
@@ -28,6 +28,8 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummary();
+
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -41,18 +43,15 @@ class ResultsScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const Text(
-            'You answered 3 questions correctly',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
-          ),
           const SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
-              itemCount: selectedAnswers.length,
+              itemCount: summaryData.length,
               itemBuilder: (context, index) {
+                final data = summaryData[index];
+                final isCorrect =
+                    data['correct_answer'] == data['selected_answer'];
+
                 return Card(
                   color: Colors.transparent,
                   elevation: 5,
@@ -66,12 +65,44 @@ class ResultsScreen extends StatelessWidget {
                       color: Colors.white.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
-                      selectedAnswers[index],
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                data['question'] as String,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'Your answer: ${data['selected_answer']}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                'Correct answer: ${data['correct_answer']}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          isCorrect ? Icons.check_circle : Icons.cancel,
+                          color: isCorrect ? Colors.green : Colors.red,
+                          size: 30,
+                        ),
+                      ],
                     ),
                   ),
                 );
