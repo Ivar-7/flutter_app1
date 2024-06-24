@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnswerButton extends StatelessWidget {
-  const AnswerButton(this.answer, this.ontap, {super.key});
+  const AnswerButton({super.key, required this.answer, required this.ontap});
 
   final String answer;
   final void Function() ontap;
