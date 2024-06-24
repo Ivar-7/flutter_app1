@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app1/data/questions.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
@@ -9,6 +10,21 @@ class ResultsScreen extends StatelessWidget {
 
   final List<String> selectedAnswers;
   final void Function() restartQuiz;
+
+  List<Map<String, Object>> getSummary() {
+    final List<Map<String, Object>> summary = [];
+
+    for (var i = 0; i < selectedAnswers.length; i++) {
+      summary.add({
+        'question_index': i,
+        'question': questions[i],
+        'correct_answer': questions[0],
+        'selected_answer': selectedAnswers[i],
+      });
+    }
+
+    return summary;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +39,13 @@ class ResultsScreen extends StatelessWidget {
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'You answered 3 questions correctly',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
             ),
           ),
           const SizedBox(height: 20),
@@ -63,7 +86,7 @@ class ResultsScreen extends StatelessWidget {
                 horizontal: 40,
                 vertical: 15,
               ),
-              backgroundColor: const Color(0xFFe74c3c),
+              backgroundColor: const Color.fromARGB(255, 154, 21, 177),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
