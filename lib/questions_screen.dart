@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app1/answer_button.dart';
+import 'package:flutter_app1/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -14,28 +15,30 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[0];
+
     return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'The Questions...',
-            style: TextStyle(color: Colors.white),
+          Text(
+            currentQuestion.text,
+            style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(
             height: 20,
           ),
           AnswerButton(
-            'constraints to ensure uniformity. Here are two possible solutions:',
+            currentQuestion.answers[0],
             saveAnswer,
           ),
           AnswerButton(
-            'answer',
+            currentQuestion.answers[1],
             saveAnswer,
           ),
           AnswerButton(
-            'answer 3',
+            currentQuestion.answers[3],
             saveAnswer,
           ),
         ],
