@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app1/models/expense.dart';
+import 'package:flutter_app1/widgets/expenses_view/expense_item.dart';
 
 class ExpensesList extends StatelessWidget {
   const ExpensesList({super.key, required this.expenses});
@@ -11,17 +12,7 @@ class ExpensesList extends StatelessWidget {
       itemCount: expenses.length,
       itemBuilder: (context, index) {
         final expense = expenses[index];
-        return Column(
-          children: [
-            ListTile(
-              title: Text(expense.title),
-              subtitle: Text((expense.date).toString()),
-              leading: Text(expense.category.toString()),
-              trailing: Text('\$${expense.amount.toString()}'),
-            ),
-            const Divider(),
-          ],
-        );
+        return ExpenseItem(expense: expense);
       },
     );
   }
