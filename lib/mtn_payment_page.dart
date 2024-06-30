@@ -55,7 +55,7 @@ class _MtnPaymentPageState extends State<MtnPaymentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Make a Payment'),
+        title: const Text('MTN MoMo Payment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
