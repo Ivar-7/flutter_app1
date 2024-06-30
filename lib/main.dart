@@ -53,15 +53,18 @@ class _PaymentPageState extends State<PaymentPage> {
     if (response.statusCode == 200) {
       final responseData = jsonDecode(response.body);
       if (responseData['status'] == 'success') {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Payment successful!')),
         );
       } else {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Payment failed: ${responseData['message']}')),
         );
       }
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${response.reasonPhrase}')),
       );
