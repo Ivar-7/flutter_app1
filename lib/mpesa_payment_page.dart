@@ -21,7 +21,7 @@ class _MpesaPaymentPageState extends State<MpesaPaymentPage> {
     final phone = _phoneController.text;
     final amount = _amountController.text;
 
-    final url = Uri.parse('http://your-django-backend-url/mpesa_payment');
+    final url = Uri.parse('http://127.0.0.1:8000/mpesa/mpesa_payment/');
     final response = await http.post(
       url,
       headers: <String, String>{

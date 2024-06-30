@@ -21,7 +21,7 @@ class _MtnPaymentPageState extends State<MtnPaymentPage> {
     final amount = _amountController.text;
     final phoneNumber = _phoneNumberController.text;
 
-    final url = Uri.parse('http://your-django-backend-url/collection');
+    final url = Uri.parse('http://127.0.0.1:8000/mtnmo/collect/');
     final response = await http.post(
       url,
       headers: <String, String>{
