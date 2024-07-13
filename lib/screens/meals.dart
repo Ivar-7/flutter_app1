@@ -12,11 +12,16 @@ class MealsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Use MediaQuery to decide if we should show a grid
     bool isWideScreen = MediaQuery.of(context).size.width > 600;
+    int gridCount = MediaQuery.of(context).size.width > 1200
+        ? 3
+        : MediaQuery.of(context).size.width > 900
+            ? 2
+            : 1;
 
     Widget content = isWideScreen
         ? GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, // Adjust based on your needs
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: gridCount,
               childAspectRatio: 3 / 2,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
