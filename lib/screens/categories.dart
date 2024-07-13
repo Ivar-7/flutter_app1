@@ -25,11 +25,7 @@ class CategoriesScreen extends StatelessWidget {
     int crossAxisCount =
         screenWidth < 600 ? 2 : 4; // More columns for wider screens
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pick your category'),
-      ),
-      body: GridView(
+    return GridView(
         padding: const EdgeInsets.all(24),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
@@ -45,8 +41,7 @@ class CategoriesScreen extends StatelessWidget {
                 _selectCategory(context, category);
               },
             )
-        ],
-      ),
+      ],
     );
   }
 }
